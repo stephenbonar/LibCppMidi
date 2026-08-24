@@ -70,6 +70,16 @@ As a user, I want support for MIDI events so I can read and write the MIDI event
 
 A MIDI event is part of a MIDI track event and can contain different data depending on the event type (thus should be a base class and report its type, which derived types will provide).
 
+## Story: Unrecognized Event
+
+### Description
+
+As a user, I want support for unrecognized events so I can display information about events the library or program is unable to decode.
+
+### Requirements
+
+The unrecognized event should inherit from MIDI event and indicate its type as unrecognized.
+
 ## Story: MidiMessageEvent
 
 ### Description
