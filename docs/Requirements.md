@@ -92,13 +92,23 @@ A MIDI message is composed of a status byte followed by zero or more data bytes.
 
 ## Story: Channel Message
 
-### Descriptioin
+### Description
 
 As a user, I want support for channel messages so I can read and write messages that control MIDI channels to and from a MIDI file.
 
 ### Requirements
 
 A MIDI channel message should inherit from Midi::Message and be able to report the channel encoded in its status byte.
+
+## Story: Unrecognized Message
+
+### Description
+
+As a user, I want support for an unrecognized message so I can display information about messages the library is not yet able to decode.
+
+### Requirements
+
+The unrecognized message should inherit from Midi::Message and its details should indicate that this type of message is not recognized.
 
 ## Story: Note Off Message
 
