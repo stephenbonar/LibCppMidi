@@ -16,7 +16,14 @@
 
 # Define the source files for the test executable target.
 set(SOURCES
-    Midi/FileTests.cpp)
+    Midi/FileTests.cpp
+    Midi/ChunkHeaderTests.cpp
+    Midi/HeaderChunkDataTests.cpp)
+
+# Define the libraries to link against the test executable target.
+set(LIBRARIES
+    LibCppMidi
+    gtest_main)
 
 # Resolve DOWNLOAD_EXTRACT_TIMESTAMP warning policy by using new behavior.
 if(POLICY CMP0135)
@@ -41,12 +48,10 @@ include(GoogleTest)
 
 # Defines the test executable target.
 add_executable(libcppmiditests
-               Midi/FileTests.cpp)
+               ${SOURCES})
 
 # Links the libraries to the test executable target.
-target_link_libraries(libcppmiditests
-                      LibCppMidi
-                      gmock_main)
+target_link_libraries(libcppmiditests ${LIBRARIES})
 
 # Sets the include directories the exectable target needs for linking.
 target_include_directories(libcppmiditests 

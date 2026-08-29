@@ -15,7 +15,8 @@
 # limitations under the License.
 
 set(SOURCES 
-    Midi/File.cpp)
+    Midi/File.cpp
+    Midi/HeaderChunkData.cpp)
 
 set(LIBRARIES LibCppBinary)
 

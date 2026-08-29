@@ -14,21 +14,21 @@ A MIDI file should have a path, support loading the file to memory, and saving c
 
 ### Description
 
-As a user, I want support for MIDI chunk headers so I can find specific data structures in the MIDI file.
+As a **user**, **I** want *support* for MIDI chunk **headers** so **I** can *find* specific data **structures** in the MIDI **file**.
 
 ### Requirements
 
-A chunk header should inherit from Binary::ChunkHeader but change the size from little endian to big endian as MIDI files use big endian integers.
+A chunk **header** should *inherit* from **Binary::ChunkHeader** but *change* the **size** from little **endian** to big **endian** as MIDI **files** use big endian **integers**.
 
 ## Story: MIDI Header Chunk Data
 
 ### Description
 
-As a user, I want support for MIDI Header Chunk Data so I can properly read from and write to the MIDI file structure.
+As a **user**, I *want* **support** for MIDI Header Chunk **Data** so **I** can properly *read* from and *write* to the MIDI **file** structure.
 
 ### Requirements
 
-The MIDI header chunk data should inherit from Binary::DataStructure and contain a Binary::UInt16 format field where 0 indicates a single multi-channel track, 1 indicates simultaneous tracks, and 2 indicates sequentially independent single track patterns, followed by a Binary::UInt16 number of tracks field, followed by a Binary::UInt16 division field, where if most significant bit is 0, the remaining bits represent ticks per quarter note, but if the most significant bit is 1, bits 14 - 8 represent time code format and bits 7 - 0 represent ticks per frame
+The MIDI header chunk **data** should *inherit* from **Binary::DataStructure** and *contain* a Binary::UInt16 format **field** where **0** *indicates* a single multi-channel **track**, **1** *indicates* simultaneous **tracks**, and **2** *indicates* sequentially independent single track **patterns**, followed by a Binary::UInt16 number of tracks **field**, followed by a Binary::UInt16 division **field**, where if most significant **bit** *is* **0**, the remaining **bits** represent **ticks** per quarter note, but if the most significant **bit** *is* **1**, **bits** 14 - 8 *represent* time code **format** and **bits** 7 - 0 *represent* **ticks** per frame
 
 ## Story: MIDI Track Chunk Data
 
@@ -88,7 +88,27 @@ As a user, I want support for MIDI message events so I retrieve and store MIDI m
 
 ### Requirements
 
-A MIDI message event carries a MIDI message and should report a type of MIDI message. It should inherit from Midi::Event. 
+A MIDI message event carries a MIDI message and should report a type of MIDI message. It should inherit from Midi::Event.
+
+## Story: System Exclusive Event
+
+### Description
+
+As a user, I want support for system exclusive events so I can read and write manufacturer specific hardware or software events in the MIDI file.
+
+### Requirements
+
+A sysex event should have a length (variable length quantity), indicate if it starts the message, indicate if it is a multi packet message, or if it is an escape. The sysex event should inherit from Binary::DataStructure.
+
+## Story: Meta Event
+
+### Description
+
+As a user, I want my library to support MIDI meta events so that I can read, interpret, and display file‑level information such as tempo, time signature, track names, and markers when inspecting a MIDI file.
+
+### Requirements
+
+Meta events should include a type byte, length (variable length quantity), and data bytes. Meta events should inherit from Binary::DataStructure.
 
 ## Story: Midi Message
 
@@ -109,6 +129,26 @@ As a user, I want support for channel messages so I can read and write messages 
 ### Requirements
 
 A MIDI channel message should inherit from Midi::Message and be able to report the channel encoded in its status byte.
+
+## Story: Channel Voice Message
+
+### Description
+
+As a user, I want support for channel voice messages so I can read and write messages that control specific voices to and from a MIDI file.
+
+### Requirements
+
+Channel Voice Message should inherit from Midi::ChannelMessage. 
+
+## Story: Channel Mode Message
+
+### Description
+
+As a user, I want support for channel mode messages so I can read and write channel mode changes in the MIDI file.
+
+### Requirements
+
+Channel Mode Message should inherit from Midi::ChannelMessage
 
 ## Story: Unrecognized Message
 
@@ -194,4 +234,5 @@ A pitch change message should inherit from Midi::ChannelMessage andh provide a p
 
 ### Description
 
-As a user, I want support for system common events so I can read and write global, non‑real‑time musical context events (such as Song Position Pointer and Song Select) in MIDI files. 
+As a user, I want support for system common events so I can read and write global, non‑real‑time musical context events (such as Song Position Pointer and Song Select) in MIDI files.
+

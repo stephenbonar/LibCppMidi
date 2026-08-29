@@ -18,5 +18,7 @@
 #define LIB_CPP_MIDI_H
 
 #include "Midi/File.h"
+#include "Midi/ChunkHeader.h"
+#include "Midi/HeaderChunkData.h"
 
 #endif
