@@ -18,7 +18,8 @@
 set(SOURCES
     Midi/FileTests.cpp
     Midi/ChunkHeaderTests.cpp
-    Midi/HeaderChunkDataTests.cpp)
+    Midi/HeaderChunkDataTests.cpp
+    Midi/VariableLengthQuantityTests.cpp)
 
 # Define the libraries to link against the test executable target.
 set(LIBRARIES

@@ -16,7 +16,8 @@
 
 set(SOURCES 
     Midi/File.cpp
-    Midi/HeaderChunkData.cpp)
+    Midi/HeaderChunkData.cpp
+    Midi/VariableLengthQuantity.cpp)
 
 set(LIBRARIES LibCppBinary)
 

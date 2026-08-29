@@ -20,5 +20,6 @@
 #include "Midi/File.h"
 #include "Midi/ChunkHeader.h"
 #include "Midi/HeaderChunkData.h"
+#include "Midi/VariableLengthQuantity.h"
 
 #endif

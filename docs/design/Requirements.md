@@ -54,11 +54,11 @@ A MIDI track event should inherit from Binary::DataStructure and should have a v
 
 ### Description
 
-As a user, I want support for variable length quantities as many MIDI data fields are stored as these.
+As a **user**, **I** *want* **support** for variable length **quantities** as many MIDI data **fields** are *stored* as **these**.
 
 ### Requirements
 
-A variable length quantity is a series of bytes that represent a number where each byte is a 7-bit number with the most significant bit determining if there's another byte representing the number. If the most signficiant bit is 1, then there's another byte in the sequence. If the most signficiant bit is 0, it is the last byte that makes up the number. The variable length quantity should inherit from Binary::DataField and provide Value() and SetValue() methods that retrieve and store the integer value, automatically converting the underlying raw bytes. Midi::File should have the ability to read variable length quantities and return the resulting variable length quantity object (writes should be able to be done natively to Binary::Stream objects).
+A variable length **quantity** *is* a series of **bytes** that *represent* a **number** where each **byte** *is* a 7-bit **number** with the most significant **bit** *determining* if there's another *byte* *representing* the **number**. If the most signficiant **bit** *is* **1**, then there's another **byte** in the **sequence**. If the most signficiant **bit** *is* **0**, it is the last **byte** that *makes* up the **number**. The variable length **quantity** should *inherit* from **Binary::DataField** and provide **Value()** and *SetValue()* methods that *retrieve* and *store* the integer **value**, automatically *converting* the underlying raw **bytes**. **Midi::File** should *have* the **ability** to *read* variable length **quantities** and *return* the resulting variable length quantity **object** (writes should be able to be done natively to Binary::Stream objects).
 
 ## Story: MIDI Events
 

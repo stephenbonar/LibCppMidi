@@ -17,12 +17,14 @@
 cmake_minimum_required(VERSION 3.16.0)
 
 # Define the project metadata.
-project(LibCppMidi VERSION 0.51.0 LANGUAGES C CXX)
+project(LibCppMidi VERSION 0.1.0 LANGUAGES C CXX)
 
 # Specify the C++ standard. C++ 17 is the modern default with the widest 
 # compatibility.
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+enable_testing()
 
 # Add the main source code directory to the project so we can compile the
 # library.
