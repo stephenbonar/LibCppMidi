@@ -29,19 +29,22 @@ namespace Midi
     public:
         VariableLengthQuantity(size_t size);
 
-        size_t Size() const override;
+        //size_t Size() const override;
 
         //char* RawData() override;
 
         //const char* RawData() const override;
 
-        //std::string ToString() const override;
+        std::string ToString() const override
+        {
+            return std::to_string(Value());
+        }
 
         //std::string ToString(Binary::StringFormat format) const override;
 
-        std::uint32_t Value() const;
+        std::uint32_t Value() const { return ConvertFromRawData(); }
 
-        void SetValue(std::uint32_t value);
+        void SetValue(std::uint32_t value) { ConvertToRawData(value); }
 
     private:
         // std::unique_ptr<char[]> rawData;
