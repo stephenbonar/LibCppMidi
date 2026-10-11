@@ -27,3 +27,18 @@
 | - std::unique_ptr<char[]> rawData |
 | - std::uint32_t ConvertFromRawData() const |
 | - void ConvertToRawData(std::uint32_t) |
+
+| abstract class Midi::Event |
+| - |
+| + Midi::EventType Type() |
+
+| class Midi::EventType |
+| - |
+| + Midi |
+| + SystemExclusive |
+| + Meta |
+
+| class Midi::TrackEvent : public Binary::DataStructure |
+| - |
+| - VariableLengthQuantity deltaTime |
+| - Midi::Event event |

@@ -18,7 +18,7 @@ As a **user**, **I** want *support* for MIDI chunk **headers** so **I** can *fin
 
 ### Requirements
 
-A chunk **header** should *inherit* from **Binary::ChunkHeader** but *change* the **size** from little **endian** to big **endian** as MIDI **files** use big endian **integers**.
+A chunk **header** should *inherit* from **Binary::ChunkHeader** but *change* the **size** from little **endian** to big **endian** as MIDI **files** *use* big endian **integers**.
 
 ## Story: MIDI Header Chunk Data
 
@@ -40,15 +40,25 @@ As a user, I want support for MIDI track chunk data so I can properly read and w
 
 MIDI Track Chunk Data should inherit from Binary::DataStructure and contain one or more MIDI track events.
 
+## Story: MIDI Events
+
+### Description
+
+As a **user**, **I** *want* **support** for MIDI **events** so **I** can *read* and *write* the MIDI **events** that *make* up a **song** to and from MIDI **files**.
+
+### Requirements
+
+A MIDI **event** *is* part of a MIDI track **event** and can *contain* different **data** depending on the event **type** (thus should *be* a base **class** and *report* its **type**, which derived **types** will *provide*). **Types** of events *include* midi **events**, system exclusive **events**, and meta **events**.
+
 ## Story: MIDI Track Events
 
 ### Description
 
-As a user, I want support for MIDI track events so I can read and write MIDI track events to MIDI files.
+As a **user**, **I** *want* **support** for MIDI track **events** so **I** can *read* and *write* MIDI track **events** to MIDI **files**.
 
 ### Requirements
 
-A MIDI track event should inherit from Binary::DataStructure and should have a variable-length quantity delta-time field followed by a MIDI event field.
+A MIDI track **event** should *inherit* from **Binary::DataStructure** and should *have* a variable-length quantity delta-time **field** followed by a MIDI event **field**.
 
 ## Story: Variable Length Quantities
 
@@ -59,16 +69,6 @@ As a **user**, **I** *want* **support** for variable length **quantities** as ma
 ### Requirements
 
 A variable length **quantity** *is* a series of **bytes** that *represent* a **number** where each **byte** *is* a 7-bit **number** with the most significant **bit** *determining* if there's another *byte* *representing* the **number**. If the most signficiant **bit** *is* **1**, then there's another **byte** in the **sequence**. If the most signficiant **bit** *is* **0**, it is the last **byte** that *makes* up the **number**. The variable length **quantity** should *inherit* from **Binary::DataField** and provide **Value()** and *SetValue()* methods that *retrieve* and *store* the integer **value**, automatically *converting* the underlying raw **bytes**. **Midi::File** should *have* the **ability** to *read* variable length **quantities** and *return* the resulting variable length quantity **object** (writes should be able to be done natively to Binary::Stream objects).
-
-## Story: MIDI Events
-
-### Description
-
-As a user, I want support for MIDI events so I can read and write the MIDI events that make up a song to and from MIDI files.
-
-### Requirements
-
-A MIDI event is part of a MIDI track event and can contain different data depending on the event type (thus should be a base class and report its type, which derived types will provide).
 
 ## Story: Unrecognized Event
 

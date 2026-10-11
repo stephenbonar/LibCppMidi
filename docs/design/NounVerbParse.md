@@ -2,19 +2,19 @@
 
 | Subject Noun | Noun Type | Verb | Verb Type | Object Noun | Noun Type | Status |
 | - | - | - | - | - | - | - |
-| user | actor | want | requirement | support | feature | X |
-| I | actor | want | requirement | (midi chunk) header | entity | X |
-| I | actor | find | action | (data) structures | entity | C |
+| user | actor | want | request indicator | support | feature | X |
+| I | actor | want | request indicator | (midi chunk) header | entity | X |
+| I | actor | find | use case | (data) structures | entity | X |
 | (midi) file | entity | - | - | - | - | X |
 | (chunk) header | entity | inherit | relationship | (binary chunk) header | entity | X |
-| (chunk) header | entity | change | action | size | attribute | X |
+| (chunk) header | entity | change | action | size | attribute | C |
 | (little) endian | attribute value | - | - | - | - | C |
 | (big) endian | attribute value | - | - | - | - | C |
-| (midi) file | entity | use | requirement | (big endian) integer | attribute value | X |
-| user | actor | want | requirement | support | feature | X |
-| I | actor | want | requirement | (midi header chunk) data | entity | X |
-| I | actor | read | action | (midi) file | entity | C |
-| I | actor | write | action | (midi) file | entity | C |
+| (midi) file | entity | use | constraint | (big endian) integer | attribute value | X |
+| user | actor | want | request indicator | support | feature | X |
+| (midi header chunk) data | entity | - | - | - | - | X |
+| I | actor | read | use case | (midi) file | entity | X |
+| I | actor | write | use case | (midi) file | entity | X |
 | (midi header chunk) data | entity | inherit | relationship | (binary data) structure | X |
 | (midi header chunk) data | contain | composition | (format) field | attribute | X |
 | zero | attribute value | indicates | relationship | (single) track | constant | X |
@@ -27,9 +27,9 @@
 | (most significant) bit | variable | is | relationship | one | variable value | - |
 | bit (14 - 8) | variable | represent | relationship | (time code) format | variable | - |
 | bit (7 - 0) | variable | represent | relationship | ticks (per frame) | variable | - |
-| user | actor | want | requirement | support | feature | X |
-| I | actor | want | requirement | (variable length) quantity | entity | X |
-| (midi data) field | entity | store | composition | - | - | C |
+| user | actor | want | request indicator | support | feature | X |
+| (variable length) quantity | entity | - | - | - | - | X |
+| (midi data) field | entity | store | constraint | - | - | X |
 | (variable length) quantity | entity | is | relationship | (byte) series | attribute | X |
 | (byte) series | attribute | represent | relationship | number | value | X |
 | byte | variable | is | relationship | (7-bit) number | value | - |
@@ -45,9 +45,26 @@
 | (variable length) quantity | entity | store | action | (integer) value | parameter | C |
 | (variable length) quantity | entity | convert (from) | action | (raw) bytes | X |
 | (variable length) quantity | entity | convert (to) | action | (raw) bytes | X |
-| (midi) file | entity | have | requirement | ability | feature | X |
+| (midi) file | entity | have | capability indicator | ability | capability | X |
 | (midi) file | entity | read | action | (variable length) quantities | entity | X |
 | (midi) file | entity | return | action | (variable length quantity) object | return value | X |
+| user | actor | want | request indicator | support | feature | X |
+| I | actor | read | use case | (midi track) event | entity | X |
+| (midi track) event | entity | inherit | inheritance | (binary data) structure | entity | X |
+| (midi track) event | entity | have | composition | (delta time) field | attribute | X |
+| (midi track) event | entity | have | composition | (midi event) field | attribute | X |
+| user | actor | request indicator | support | feature | X |
+| (midi) event | entity | - | - | - | - | X |
+| I | actor | read | use case | (midi) events | entity | X |
+| I | actor | write | use case | (midi) events | entity | X |
+| (midi) event | entity | make (up) | composition | (midi) file | entity | X |
+| (midi) event | entity | is (part of) | composition | (midi track) event | entity | X |
+| (midi) event | entity | contain | composition | data | attribute | C |
+| (event) type | entity | - | - | - | - | X |
+| (midi) event | entity | be | inhertiance | (base) class | inheritance | X |
+| (midi) event | entity | report | method | (event) type | entity | X |
+| (derived) type | entity | provide | composition / inheritance | - | - | X |
+| (event) type | entity | include | composition | (midi) event | attribute | X |
 
 Status:
 - X = Documented
